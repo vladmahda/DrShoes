@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ArrayOfClient xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Client>
+    <Id>1</Id>
+    <Surname>Ivanov</Surname>
+    <Name>Ivan</Name>
+    <MiddleName>Ivanovich</MiddleName>
+    <Phone>111111</Phone>
+    <Notes>first</Notes>
+    <Fullname>Ivanov I.I.</Fullname>
+  </Client>
+  <Client>
+    <Id>2</Id>
+    <Surname>Petrov</Surname>
+    <Name>Petr</Name>
+    <MiddleName>Petrovich</MiddleName>
+    <Phone>222222</Phone>
+    <Notes>second</Notes>
+    <Fullname>Petrov P.P.</Fullname>
+  </Client>
+  <Client>
+    <Id>3</Id>
+    <Surname>Sidorov</Surname>
+    <Name>Petr</Name>
+    <MiddleName>Petrovich</MiddleName>
+    <Phone>333333</Phone>
+    <Notes>third</Notes>
+    <Fullname>Sidorov P.P.</Fullname>
+  </Client>
+  <Client>
+    <Id>4</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
+  <Client>
+    <Id>5</Id>
+    <Surname>Test1</Surname>
+    <Name>Test</Name>
+    <MiddleName>Test</MiddleName>
+    <Phone>000111222</Phone>
+    <Notes>note test</Notes>
+    <Fullname>Test1 T.T.</Fullname>
+  </Client>
+</ArrayOfClient>

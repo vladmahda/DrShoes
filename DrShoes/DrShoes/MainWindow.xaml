@@ -1,0 +1,325 @@
+﻿<Window x:Class="DrShoes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:local="clr-namespace:DrShoes"
+        xmlns:model="clr-namespace:DrShoes.Model"
+        xmlns:viewmodel="clr-namespace:DrShoes.ViewModel"
+        mc:Ignorable="d"
+        Title="DrShoes">
+    <Window.DataContext>
+        <viewmodel:VMOrders/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="BorderStyle">
+            <Setter Property="Border.Background" Value="LightYellow" />
+            <Setter Property="Border.BorderBrush" Value="SteelBlue" />
+            <Setter Property="Border.BorderThickness" Value="2" />
+            <Setter Property="Border.CornerRadius" Value="3" />
+            <!--<Setter Property="Border.Margin" Value="0" />-->
+        </Style>
+    </Window.Resources>
+    <Grid Name="MainGrid" Margin="10, 15">
+        <TabControl Name="mainTabCntrl" TabStripPlacement="Bottom">
+            <!-- Вкладка "Заказы" -->
+            <TabItem Header="Заказы" HorizontalAlignment="Left" Width="55" Height="22" Margin="0,0,0,-2" VerticalAlignment="Top" d:IsHidden="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="stPOrderInvoice" Grid.Row="0" Grid.Column="0">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Квитанция" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderInvoice" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderDateOfInvoice" Grid.Row="0" Grid.Column="1">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Дата приема" HorizontalAlignment="Center"></Label>
+                        <DatePicker Name="dtPickerOrderDate" ></DatePicker>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderClientFIO" Grid.Row="0" Grid.Column="2">
+                        <StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>
+                        <Label Content="Ф.И.О." HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderClientFIO" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path=viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderShoesKind" Grid.Row="0" Grid.Column="3">
+                        <Label Content="Вид обуви" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderShoesKind" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= kindCollection}" DisplayMemberPath="Title" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderProduct" Grid.Row="0" Grid.Column="4">
+                        <Label Content="Изделие" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderProduct" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= productsCollection}" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderCompany" Grid.Row="0" Grid.Column="5">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Фирма" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderCompany" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderSize" Grid.Row="0" Grid.Column="6">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Размер" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderSize" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderColor" Grid.Row="0" Grid.Column="7">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Цвет" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderColor" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderMaterial" Grid.Row="0" Grid.Column="8">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Материал" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderMaterial" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPOrderQuantity" Grid.Row="0" Grid.Column="9">
+                        <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                        <Label Content="Количество" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbOrderQuantity" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource BorderStyle}" Margin="2" BorderBrush="Aqua" BorderThickness="4" DataContext="VMClients">
+                        <StackPanel Background="Azure">
+                            <StackPanel Name="stClientInfoSurname" Orientation="Horizontal">
+                                <Label Content="Фамилия" HorizontalContentAlignment="Right" Width="80"></Label>
+                                <Label Name="lblClientInfoSurname" >Surname</Label>
+                            </StackPanel>
+                            <StackPanel Name="stClientInfoName" Orientation="Horizontal">
+                                <Label Content="Имя" HorizontalContentAlignment="Right" Width="80"></Label>
+                                <Label Name="lblClientInfoName" >Name</Label>
+                            </StackPanel>
+                            <StackPanel Name="stClientInfoMiddleName" Orientation="Horizontal">
+                                <Label Content="Отчество" HorizontalContentAlignment="Right" Width="80"></Label>
+                                <Label Name="lblClientInfoMiddleName" >MiddleName</Label>
+                            </StackPanel>
+                            <StackPanel Name="stClientInfoPhone" Orientation="Horizontal">
+                                <Label Content="Телефон" HorizontalContentAlignment="Right" Width="80"></Label>
+                                <Label Name="lblClientInfoPhone" >Phone</Label>
+                            </StackPanel>
+                            <StackPanel Name="stClientInfoNote" Orientation="Horizontal">
+                                <Label Content="Примечания" HorizontalContentAlignment="Right" Width="80"></Label>
+                                <Label Name="lblClientInfoNote" >Note</Label>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <!--Блок Дефект-Ремонт-Цена-->
+                    <Border Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4" Style="{StaticResource BorderStyle}" Margin="2" BorderBrush="Aqua" BorderThickness="4">
+                        <Grid Name="grdOrderDefectRepairPrice" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <!--<Grid.DataContext></Grid.DataContext>-->
+                            <Border Style="{StaticResource BorderStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Height="60">
+                                <StackPanel Name="stPDefectRepairPrice1" Orientation="Horizontal" >
+                                    <!--Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"-->
+                                    <StackPanel Name="stPDefect1">
+                                        <Label Content="Дефект1" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbDefect1" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPRepair1">
+                                        <Label Content="Ремонт1" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbRepair1" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPPrice1">
+                                        <Label Content="Цена1" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbPrice1" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Style="{StaticResource BorderStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="60">
+                                <StackPanel Name="stPDefectRepairPrice2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" >
+                                    <StackPanel Name="stPDefect2">
+                                        <Label Content="Дефект2" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbDefect2" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPRepair2">
+                                        <Label Content="Ремонт2" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbRepair2" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPPrice2">
+                                        <Label Content="Цена2" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbPrice2" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource BorderStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Height="60">
+                                <StackPanel Name="stPDefectRepairPrice3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" >
+                                    <StackPanel Name="stPDefect3">
+                                        <Label Content="Дефект3" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbDefect3" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPRepair3">
+                                        <Label Content="Ремонт3" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbRepair3" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPPrice3">
+                                        <Label Content="Цена3" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbPrice3" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource BorderStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Height="60">
+                                <StackPanel Name="stPDefectRepairPrice4" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" >
+                                    <StackPanel Name="stPDefect4">
+                                        <Label Content="Дефект4" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbDefect4" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPRepair4">
+                                        <Label Content="Ремонт4" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbRepair4" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                    <StackPanel Name="stPPrice4">
+                                        <Label Content="Цена4" HorizontalAlignment="Center"></Label>
+                                        <ComboBox Name="cmbPrice4" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="Button">
+                                    <Setter Property="Height" Value="40" />
+                                    <Setter Property="Border.BorderBrush" Value="GreenYellow" />
+                                    <Setter Property="Border.BorderThickness" Value="2" />
+                                    <Setter Property="Border.CornerRadius" Value="3" />
+                                    <Setter Property="Border.Margin" Value="1" />
+                            </Style>
+                        </Grid.Resources>
+                        <StackPanel Name="stPOrderApproximateDate" Grid.Row="0" Grid.Column="0">
+                            <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                            <Label Content="Ориентировочная дата" HorizontalAlignment="Center"></Label>
+                            <DatePicker Name="dtPOrderApproximateDate" ></DatePicker>
+                        </StackPanel>
+                        <StackPanel Name="stPOrderPrepaid" Grid.Row="0" Grid.Column="1">
+                            <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                            <Label Content="Аванс" HorizontalAlignment="Center"></Label>
+                            <ComboBox Name="cmbOrderPrepaid" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Name="stPOrderBalance" Grid.Row="0" Grid.Column="2">
+                            <!--<StackPanel.DataContext>
+                            <viewmodel:VMClients/>
+                        </StackPanel.DataContext>-->
+                            <Label Content="Остаток" HorizontalAlignment="Center"></Label>
+                            <ComboBox Name="cmbOrderBalance" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                        </StackPanel>
+                        <Button Name="btnOrderAddOrder" Content="Добавить заказ" Grid.Row="1" Grid.Column="0"></Button>
+                        <Button Name="btnOrderSaveOrder" Content="Сохранить заказ" Grid.Row="1" Grid.Column="1"></Button>
+                        <Button Name="btnOrderPrintOrder" Content="Печать" Grid.Row="1" Grid.Column="2"></Button>
+                    </Grid>
+                    <DataGrid Name="grdOrders" Grid.Row="2" Grid.ColumnSpan="10">
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <!--Вкладка "Клиенты"-->
+            <TabItem Header="Клиенты" IsSelected="True">
+                <TabItem.DataContext>
+                    <viewmodel:VMClients/>
+                </TabItem.DataContext>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="stPClientFIO" Grid.Row="0" Grid.Column="0">
+                        <Label Content="Ф.И.О." HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientFIO" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPClientSurname" Grid.Row="0" Grid.Column="1">
+                        <Label Content="Фамилия" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientSurname" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Surname"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPClientName" Grid.Row="0" Grid.Column="2">
+                        <Label Content="Имя" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientName" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Name"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPClientMiddleName" Grid.Row="0" Grid.Column="3">
+                        <Label Content="Отчество" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientMiddleName" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="MiddleName"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPClientPhone" Grid.Row="0" Grid.Column="4">
+                        <Label Content="Телефон" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientPhone" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Phone"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Name="stPClientNotes" Grid.Row="0" Grid.Column="5">
+                        <Label Content="Примечания" HorizontalAlignment="Center"></Label>
+                        <ComboBox Name="cmbClientNotes" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Notes"></ComboBox>
+                    </StackPanel>
+                    <DataGrid Name="grdClients" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" ItemsSource="{Binding Path=viewCollection}" AlternatingRowBackground="LightGray" CanUserAddRows="False"></DataGrid>
+                    <Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Click="btnAddClient_Click">Добавить клиента</Button>
+                    <!--<Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Command="{Binding AddClientCommand}">Добавить клиента</Button>-->
+                </Grid>
+            </TabItem>
+            <TabItem Header="Материалы">3</TabItem>
+            <TabItem Header="Расходы">4</TabItem>
+            <TabItem Header="Ключи">5</TabItem>
+            <TabItem Header="Продажи">6</TabItem>
+            <TabItem Header="Обувь">7</TabItem>
+            <TabItem>8</TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+<!--SelectionChanged="{Binding Path=GridSelectionChanged}"-->
