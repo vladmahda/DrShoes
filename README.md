@@ -1,2 +1,2 @@
 # DrShoes
-This is a CRM written on the VPF MVVM for my friend
+This is a CRM written on the WPF MVVM for my friend
