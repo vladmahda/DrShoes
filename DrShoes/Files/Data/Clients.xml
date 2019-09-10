@@ -45,4 +45,49 @@
     <Notes>note test</Notes>
     <Fullname>Test1 T.T.</Fullname>
   </Client>
+  <Client>
+    <Id>6</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
+  <Client>
+    <Id>7</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
+  <Client>
+    <Id>8</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
+  <Client>
+    <Id>9</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
+  <Client>
+    <Id>10</Id>
+    <Surname>Tutov</Surname>
+    <Name>Tut</Name>
+    <MiddleName>Tutovich</MiddleName>
+    <Phone>999999</Phone>
+    <Notes>test addClient</Notes>
+    <Fullname>Tutov T.T.</Fullname>
+  </Client>
 </ArrayOfClient>

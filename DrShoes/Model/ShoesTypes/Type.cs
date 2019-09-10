@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace DrShoes.Model
 {
-    public class Kind : INotifyPropertyChanged
+    public class Type : INotifyPropertyChanged
     {
         private int id;
         private string title;
 
-        public Kind()
+        public Type()
         {
         }
 
-        public Kind(int id, string title)
+        public Type(int id, string title)
         {
             this.id = id;
             this.title = title;

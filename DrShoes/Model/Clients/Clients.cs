@@ -34,7 +34,7 @@ namespace DrShoes.Model
         public Clients()
         {
             clientsCollection = new ObservableCollection<Client>();
-            clientsCollection = WorkWithXaml.getClientsData(clientsCollection, FilePath);
+            clientsCollection = XamlRepository.getClientsData(clientsCollection, FilePath);
             //Client cl1 = new Client(1, "Ivanov", "Ivan", "Ivanovich", "111111", "first");
             //Client cl2 = new Client(2, "Petrov", "Petr", "Petrovich", "222222", "second");
             //clientsCollection.Add(cl1);
@@ -42,46 +42,46 @@ namespace DrShoes.Model
             //WorkWithXaml.saveData(clientsCollection, filePath);
         }
 
-        // Добавление клиента в коллекцию.
-        public bool AddClient(Client clientToList)
+        // Add client to the collection.
+        public bool AddClient(Client client)
         {
-            if (clientToList.Id != 0)
+            if (client.Id != 0)
             {
-                if (!checkClient(clientToList))
+                if (!checkClient(client))
                 {
-                    ClientsCollection.Add(clientToList);
-                    WorkWithXaml.saveData(ClientsCollection, FilePath);
+                    ClientsCollection.Add(client);
+                    XamlRepository.saveData(ClientsCollection, FilePath);
                     return true;
                 }
                 else
                 {
-                    MessageBox.Show($"Клиент с Id = {clientToList.Id} уже существует.\n Введите другое Id");
+                    MessageBox.Show($"Клиент с Id = {client.Id} уже существует.\n Введите другое Id");
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show($"Поле Id клиента {clientToList.Surname} пустое. Введите Id");
+                MessageBox.Show($"Поле Id клиента {client.Surname} пустое. Введите Id");
                 return false;
             }
         }
 
-        // Удаление клиента из коллекции.
-        public bool DeleteClient(Client clientToDelete)
+        // Delete client from the collection.
+        public bool DeleteClient(Client client)
         {
-            if (checkClient(clientToDelete))
+            if (checkClient(client))
             {
-                ClientsCollection.Remove(clientToDelete);
+                ClientsCollection.Remove(client);
                 return true;
             }
             else
             {
-                MessageBox.Show($"Клиент с фамилией \"{clientToDelete.Surname}\" не существует.\n Удаление невозможно.");
+                MessageBox.Show($"Клиент с фамилией \"{client.Surname}\" не существует.\n Удаление невозможно.");
                 return false;
             }
         }
 
-        //Проверка, есть ли клиент в коллекции.
+        // Check for client presence in the collection.
         public bool checkClient(Client checkingClient)
         {
             if (ClientsCollection.Count != 0)
@@ -98,16 +98,16 @@ namespace DrShoes.Model
             return false;
         }
 
-        // Обработчик события изменения коллекции
+        // Collection Change Event Handler.
         private static void Clients_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
-                case NotifyCollectionChangedAction.Add: // если добавление
+                case NotifyCollectionChangedAction.Add: // if Add
                     Client newClient = e.NewItems[0] as Client;
                     MessageBox.Show("Добавлен новый объект: {0}", newClient.Surname);
                     break;
-                case NotifyCollectionChangedAction.Remove: // если удаление
+                case NotifyCollectionChangedAction.Remove: // if Delete
                     Client oldClient = e.OldItems[0] as Client;
                     MessageBox.Show("Удален объект: {0}", oldClient.Surname);
                     break;

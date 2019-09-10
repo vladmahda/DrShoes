@@ -11,15 +11,15 @@ namespace DrShoes.ViewModel
 {
     public class VMOrders : BindableBase
     {
-        public ShoesKind kindModel = new ShoesKind();
-        public ObservableCollection<Kind> kindCollection => kindModel.KindCollection;
+        public ShoesTypes typesModel = new ShoesTypes();
+        public ObservableCollection<DrShoes.Model.Type> typesCollection => typesModel.TypesCollection;
 
         public Products productsModel = new Products();
         public ObservableCollection<string> productsCollection => productsModel.ProductsCollection;
 
         public VMOrders()
         {
-            kindModel.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
+            typesModel.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
         }
 
     }

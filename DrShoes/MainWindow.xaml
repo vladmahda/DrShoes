@@ -23,7 +23,7 @@
     </Window.Resources>
     <Grid Name="MainGrid" Margin="10, 15">
         <TabControl Name="mainTabCntrl" TabStripPlacement="Bottom">
-            <!-- Вкладка "Заказы" -->
+            <!-- TabItem "Orders" -->
             <TabItem Header="Заказы" HorizontalAlignment="Left" Width="55" Height="22" Margin="0,0,0,-2" VerticalAlignment="Top" d:IsHidden="True">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -64,9 +64,9 @@
                         <Label Content="Ф.И.О." HorizontalAlignment="Center"></Label>
                         <ComboBox Name="cmbOrderClientFIO" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path=viewCollection}" DisplayMemberPath="Fullname" SelectedIndex="0"></ComboBox>
                     </StackPanel>
-                    <StackPanel Name="stPOrderShoesKind" Grid.Row="0" Grid.Column="3">
+                    <StackPanel Name="stPOrderShoesTypes" Grid.Row="0" Grid.Column="3">
                         <Label Content="Вид обуви" HorizontalAlignment="Center"></Label>
-                        <ComboBox Name="cmbOrderShoesKind" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= kindCollection}" DisplayMemberPath="Title" SelectedIndex="0"></ComboBox>
+                        <ComboBox Name="cmbOrderShoesTypes" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= typesCollection}" DisplayMemberPath="Title" SelectedIndex="0"></ComboBox>
                     </StackPanel>
                     <StackPanel Name="stPOrderProduct" Grid.Row="0" Grid.Column="4">
                         <Label Content="Изделие" HorizontalAlignment="Center"></Label>
@@ -263,7 +263,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <!--Вкладка "Клиенты"-->
+            <!--TabItem "Clients"-->
             <TabItem Header="Клиенты" IsSelected="True">
                 <TabItem.DataContext>
                     <viewmodel:VMClients/>
@@ -309,8 +309,7 @@
                         <ComboBox Name="cmbClientNotes" IsTextSearchEnabled="True" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Path= viewCollection}" DisplayMemberPath="Notes"></ComboBox>
                     </StackPanel>
                     <DataGrid Name="grdClients" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" ItemsSource="{Binding Path=viewCollection}" AlternatingRowBackground="LightGray" CanUserAddRows="False"></DataGrid>
-                    <Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Click="btnAddClient_Click">Добавить клиента</Button>
-                    <!--<Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Command="{Binding AddClientCommand}">Добавить клиента</Button>-->
+                    <Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Command="{Binding AddClientCommand}">Добавить клиента</Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Материалы">3</TabItem>
@@ -323,3 +322,4 @@
     </Grid>
 </Window>
 <!--SelectionChanged="{Binding Path=GridSelectionChanged}"-->
+<!--<Button Name="btnAddClient" Grid.Row="1" Grid.Column="0" Height="25" Click="btnAddClient_Click">Добавить клиента</Button>-->

@@ -1,31 +1,31 @@
 <?xml version="1.0"?>
-<ArrayOfKind xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Kind>
+<ArrayOfType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Type>
     <Id>1</Id>
     <Title>Мокасины</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>2</Id>
     <Title>Босоножки</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>3</Id>
     <Title>Туфли</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>4</Id>
     <Title>Ботинки</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>5</Id>
     <Title>Кроссовки</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>6</Id>
     <Title>Сандалии</Title>
-  </Kind>
-  <Kind>
+  </Type>
+  <Type>
     <Id>7</Id>
     <Title>Балетки</Title>
-  </Kind>
-</ArrayOfKind>
+  </Type>
+</ArrayOfType>

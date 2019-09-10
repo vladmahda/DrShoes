@@ -19,22 +19,22 @@ namespace DrShoes.ViewModel
         public VMClients()
         {
             clientsModel.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
-            // Добавление нового клиента.
-            //AddClientCommand = new DelegateCommand(() =>
-            //{
-                
-            //    clientsModel.AddClient(new Client
-            //    {
-            //        Id = clientsModel.ClientsCollection.Max(x => x.Id) + 1,
-            //        Surname = "Tutov",
-            //        Name = "Tut",
-            //        MiddleName = "Tutovich",
-            //        Phone = "999999",
-            //        Notes = "test addClient",
-            //        Fullname = ""
-            //    });
+            // Add new client.
+            AddClientCommand = new DelegateCommand(() =>
+            {
 
-            //});
+                clientsModel.AddClient(new Client
+                {
+                    Id = clientsModel.ClientsCollection.Max(x => x.Id) + 1,
+                    Surname = "Tutov",
+                    Name = "Tut",
+                    MiddleName = "Tutovich",
+                    Phone = "999999",
+                    Notes = "test addClient",
+                    Fullname = ""
+                });
+
+            });
             GridSelectionChanged = new DelegateCommand(() =>
              {
                  
@@ -43,10 +43,10 @@ namespace DrShoes.ViewModel
         public ObservableCollection<Client> viewCollection => clientsModel.ClientsCollection;
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected virtual void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
     }
 }

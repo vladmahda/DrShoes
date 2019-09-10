@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace DrShoes.Model
 {
-    public class WorkWithXaml
+    public class XamlRepository
     {
         public static void saveData(object obj, string filename)
         {
@@ -29,12 +29,12 @@ namespace DrShoes.Model
             }
         }
 
-        public static ObservableCollection<Kind> getShoesKindData(object obj, string filename)
+        public static ObservableCollection<Type> getShoesTypesData(object obj, string filename)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(obj.GetType());
             using (FileStream fs = new FileStream(filename, FileMode.Open))
             {
-                return (ObservableCollection<Kind>)xmlSerializer.Deserialize(fs);
+                return (ObservableCollection<Type>)xmlSerializer.Deserialize(fs);
             }
         }
     }

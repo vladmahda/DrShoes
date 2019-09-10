@@ -24,6 +24,7 @@ namespace DrShoes
     {
         VMClients vmClients;
         VMOrders vmOrders;
+  
 
         public MainWindow()
         {          
@@ -32,32 +33,33 @@ namespace DrShoes
             vmOrders = new VMOrders();
             //grdClients.ItemsSource = cl.ClientsCollection;
             //grdClients.ItemsSource = viewmodel.viewCollection;
+            
         }
 
-        // Грубое нарушение паттерна MVVM!
-        private void btnAddClient_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Client newClient = new Client
-                {
-                    Id =vmClients.clientsModel.ClientsCollection.Max(x => x.Id) + 1,
-                    Surname = cmbClientSurname.Text,
-                    Name = cmbClientName.Text==""? " ": cmbClientName.Text,
-                    MiddleName = cmbClientMiddleName.Text,
-                    Phone = cmbClientPhone.Text,
-                    Notes = cmbClientNotes.Text,
-                    Fullname = ""
-                };
-                vmClients.clientsModel.AddClient(newClient);
-                WorkWithXaml.saveData(vmClients.clientsModel.ClientsCollection, vmClients.clientsModel.FilePath);
-                grdClients.Items.Refresh();
-            }
-            catch (Exception ex)
-            {
+        //// Грубое нарушение паттерна MVVM!
+        //private void btnAddClient_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Client newClient = new Client
+        //        {
+        //            Id =vmClients.clientsModel.ClientsCollection.Max(x => x.Id) + 1,
+        //            Surname = cmbClientSurname.Text,
+        //            Name = cmbClientName.Text==""? " ": cmbClientName.Text,
+        //            MiddleName = cmbClientMiddleName.Text,
+        //            Phone = cmbClientPhone.Text,
+        //            Notes = cmbClientNotes.Text,
+        //            Fullname = ""
+        //        };
+        //        vmClients.clientsModel.AddClient(newClient);
+        //        WorkWithXaml.saveData(vmClients.clientsModel.ClientsCollection, vmClients.clientsModel.FilePath);
+        //        grdClients.Items.Refresh();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
     }
 }
